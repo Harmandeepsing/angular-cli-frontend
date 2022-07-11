@@ -31,7 +31,7 @@ jobs:
     - run: ls -a dist 
     - run: zip -r filename.zip dist/
     - run: ls -a
-    - run: ls -a dist
+    - run: pwd
     
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
