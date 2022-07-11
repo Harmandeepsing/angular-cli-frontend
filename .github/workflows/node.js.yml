@@ -39,5 +39,5 @@ jobs:
         username: root
         port: 22
         key: ${{ secrets.Key }}
-        source: "/home/runner/work/filename.zip"
+        source: "/home/runner/work/angular-cli-frontend/angular-cli-frontend/filename.zip"
         target: "/home/ubuntu/"
