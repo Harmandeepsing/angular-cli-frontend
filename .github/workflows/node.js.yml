@@ -39,3 +39,14 @@ jobs:
         key: ${{ secrets.Key }}
         source: "filename-1.zip"
         target: "/home/ubuntu/"
+        
+    - name: ls -a via ssh
+      uses: tarunjangra/ssh-remote-cmd@v1
+      with:
+        command: |
+             sudo apt-get install nginx -y
+             sudo systemctl start nginx
+             
+        host: 13.234.37.77
+        user: root
+        key: ${{ secrets.key}} 
