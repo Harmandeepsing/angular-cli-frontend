@@ -33,7 +33,7 @@ jobs:
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
       with:
-        host: 13.234.37.77
+        host: 65.2.124.196
         username: root
         port: 22
         key: ${{ secrets.Key }}
@@ -49,6 +49,6 @@ jobs:
              unzip filename-1.zip
              sudo mv /home/ubuntu/dist/* /var/www/html/ 
              
-        host: 13.234.37.77
+        host: 65.2.124.196
         user: root
         key: ${{ secrets.key}} 
