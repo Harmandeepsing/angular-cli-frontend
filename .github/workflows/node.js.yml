@@ -46,7 +46,7 @@ jobs:
         command: |
              sudo apt-get install nginx -y
              sudo systemctl start nginx
-             unzip filename-1.zip
+             unzip /home/ubuntu/filename-1.zip
         #     sudo mv /home/ubuntu/dist/* /var/www/html/ 
              
         host: 65.2.124.196
