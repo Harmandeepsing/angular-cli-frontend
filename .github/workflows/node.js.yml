@@ -54,9 +54,12 @@ jobs:
         user: root
         key: ${{ secrets.key}} 
         
+        
+        
   dev:
 
      runs-on: ubuntu-latest
+     needs: master
 
      strategy:
       matrix:
