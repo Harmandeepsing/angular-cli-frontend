@@ -10,7 +10,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  master:
   
     runs-on: ubuntu-latest
 
@@ -54,7 +54,7 @@ jobs:
         user: root
         key: ${{ secrets.key}} 
         
-  deploy-in-dev:
+  dev:
 
      runs-on: ubuntu-latest
 
