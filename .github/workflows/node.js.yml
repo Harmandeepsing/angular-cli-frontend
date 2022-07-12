@@ -47,6 +47,8 @@ jobs:
              sudo apt-get install nginx -y
              sudo systemctl start nginx
              unzip -o /home/ubuntu/filename-1.zip
+             rmdir /home/ubuntu/dist
+             rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/ 
              
         host: 65.2.124.196
@@ -92,8 +94,6 @@ jobs:
              sudo apt-get install unzip
              unzip /home/ubuntu/filename.zip
              sudo mv -f /home/ubuntu/dist/* /var/www/html/
-             rmdir /home/ubuntu/dist/
-             rmdir /home/ubuntu/
              
         host: 65.1.94.252
         user: ubuntu
