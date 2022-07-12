@@ -40,15 +40,15 @@ jobs:
         source: "filename-1.zip"
         target: "/home/ubuntu/"
         
-    - name: ls -a via ssh
-      uses: tarunjangra/ssh-remote-cmd@v1
-      with:
-        command: |
-             sudo apt-get install nginx -y
-             sudo systemctl start nginx
-             unzip filename-1.zip
-             sudo mv /home/ubuntu/dist/* /var/www/html/ 
+ #   - name: ls -a via ssh
+  #    uses: tarunjangra/ssh-remote-cmd@v1
+  #    with:
+ #       command: |
+ #            sudo apt-get install nginx -y
+ #            sudo systemctl start nginx
+  #           unzip filename-1.zip
+  #           sudo mv /home/ubuntu/dist/* /var/www/html/ 
              
-        host: 65.2.124.196
-        user: root
-        key: ${{ secrets.key}} 
+  #      host: 65.2.124.196
+  #      user: root
+  #      key: ${{ secrets.key}} 
