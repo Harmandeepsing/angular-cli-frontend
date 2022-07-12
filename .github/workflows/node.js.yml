@@ -59,8 +59,7 @@ jobs:
   dev:
 
      runs-on: ubuntu-latest
-     if: always
-
+     
      strategy:
       matrix:
         node-version: [14.x]
