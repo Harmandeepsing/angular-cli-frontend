@@ -6,6 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: [ master,dev ]
+    paths: 
+       - ".github/workflows/node.js.yml"
   
 jobs:
   master:
