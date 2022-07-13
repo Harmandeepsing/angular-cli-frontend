@@ -79,7 +79,6 @@ jobs:
          command: |
              sudo apt-get install nginx -y
              sudo systemctl start nginx
-             sudo apt-get install unzip
              unzip -o /home/ubuntu/filename.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/
