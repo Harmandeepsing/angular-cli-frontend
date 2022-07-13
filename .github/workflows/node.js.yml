@@ -37,6 +37,7 @@ jobs:
     - run: zip -r filename.zip dist/
         
     - name: copy file via ssh key
+      if: ${{ github.ref == 'ref/heads/master' }}
       uses: appleboy/scp-action@master
       with:
         host: 13.233.140.232
@@ -47,6 +48,7 @@ jobs:
         target: "/home/ubuntu/"
         
     - name: ls -a via ssh
+      if: ${{ github.ref == 'ref/heads/master' }}
       uses: tarunjangra/ssh-remote-cmd@v1
       with:
         command: |
@@ -59,4 +61,33 @@ jobs:
         host: 13.233.140.232
         user: root
         key: ${{ secrets.key}} 
+        
+       
+    - name: copy file via ssh key
+      if: ${{ github.ref == 'ref/heads/dev' }}
+      uses: appleboy/scp-action@master
+      with:
+        host: 13.127.182.237
+        username: ubuntu
+        port: 22
+        key: ${{ secrets.Key }}
+        source: "filename.zip"
+        target: "/home/ubuntu/"
+        
+    - name: ls -a via ssh
+      if: ${{ github.ref == 'ref/heads/dev' }}
+      uses: tarunjangra/ssh-remote-cmd@v1
+      with:
+        command: |
+             sudo apt-get update
+             sudo apt-get install nginx -y
+             sudo systemctl start nginx
+             sudo apt-get install unzip
+             unzip -o /home/ubuntu/filename.zip
+             sudo rm -rf /var/www/html/*
+             sudo mv -f /home/ubuntu/dist/* /var/www/html/
+             
+        host: 13.127.182.237
+        user: ubuntu
+        key: ${{ secrets.key}}   
         
