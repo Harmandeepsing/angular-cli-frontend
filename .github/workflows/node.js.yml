@@ -6,13 +6,13 @@ name: Node.js CI
 on:
   push:
     branches:
-      - "master,prod"
+      - "master"
+      - "prod"
     
   pull_request: 
     branches: 
-       - "master,prod"
-    paths: 
-       - ".github/workflows/node.js.yml"
+       - "master"
+       - "prod"
   
 jobs:
   master:
