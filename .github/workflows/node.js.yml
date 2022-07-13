@@ -5,7 +5,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master,dev ]
+    branches:
+      - "dev"
+    
+  pull_request: 
+    branches: 
+       - "master"
     paths: 
        - ".github/workflows/node.js.yml"
   
@@ -31,6 +36,7 @@ jobs:
     - run: zip -r filename.zip dist/
     
     - name: copy file via ssh key
+      if: ${{ github.ref == 'ref/heads/dev' }}
       uses: appleboy/scp-action@master
       with:
         host: 13.127.182.237
@@ -41,6 +47,7 @@ jobs:
         target: "/home/ubuntu/"
         
     - name: ls -a via ssh
+      if: ${{ github.ref == 'ref/heads/dev' }}
       uses: tarunjangra/ssh-remote-cmd@v1
       with:
         command: |
