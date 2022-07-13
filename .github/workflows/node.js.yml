@@ -13,7 +13,10 @@ on:
     branches: 
        - "master"
        - "prod"
+
   
+=======
+      
 jobs:
   master:
      
@@ -36,7 +39,11 @@ jobs:
      - run: zip -r filename.zip dist/
         
      - name: copy file via ssh key
+
        if: github.ref == 'refs/heads/master'
+
+      # if: ${{ github.ref == 'ref/heads/master' }}
+
        uses: appleboy/scp-action@master
        with:
          host: 13.233.140.232
@@ -47,7 +54,11 @@ jobs:
          target: "/home/ubuntu/"
         
      - name: ls -a via ssh
+
        if: github.ref == 'refs/heads/master'   
+
+     #  if: ${{ github.ref == 'ref/heads/master' }}   
+
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
          command: |
@@ -79,7 +90,6 @@ jobs:
          command: |
              sudo apt-get install nginx -y
              sudo systemctl start nginx
-             sudo apt-get install unzip
              unzip -o /home/ubuntu/filename.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/
