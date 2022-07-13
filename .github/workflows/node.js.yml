@@ -36,11 +36,7 @@ jobs:
      - run: zip -r filename.zip dist/
         
      - name: copy file via ssh key
-
        if: github.ref == 'refs/heads/master'
-
-      # if: ${{ github.ref == 'ref/heads/master' }}
-
        uses: appleboy/scp-action@master
        with:
          host: 13.233.140.232
@@ -51,11 +47,7 @@ jobs:
          target: "/home/ubuntu/"
         
      - name: ls -a via ssh
-
        if: github.ref == 'refs/heads/master'   
-
-     #  if: ${{ github.ref == 'ref/heads/master' }}   
-
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
          command: |
