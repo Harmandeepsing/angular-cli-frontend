@@ -62,7 +62,7 @@ jobs:
          key: ${{ secrets.key}} 
                 
      - name: copy file via ssh key
-       if: ${{ github.ref == 'ref/heads/prod' }}
+     #  if: ${{ github.ref == 'ref/heads/prod' }}
        uses: appleboy/scp-action@master
        with:
          host: 13.127.182.237
@@ -73,7 +73,7 @@ jobs:
          target: "/home/ubuntu/"
         
      - name: ls -a via ssh
-       if: ${{ github.ref == 'ref/heads/prod' }}
+     #  if: ${{ github.ref == 'ref/heads/prod' }}
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
          command: |
