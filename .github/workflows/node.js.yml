@@ -10,10 +10,7 @@ on:
     
   pull_request: 
     branches: 
-       - "master"
-    paths: 
-       - ".github/workflows/node.js.yml"
-       
+       - "master"       
   
 jobs:
   master:
