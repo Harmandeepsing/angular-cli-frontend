@@ -70,6 +70,7 @@ jobs:
       uses: tarunjangra/ssh-remote-cmd@v1
       with:
         command: |
+             sudo apt-get update
              sudo apt-get install nginx -y
              sudo systemctl start nginx
              sudo apt-get install unzip
