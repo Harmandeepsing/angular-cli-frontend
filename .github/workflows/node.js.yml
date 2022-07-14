@@ -34,7 +34,7 @@ jobs:
        if: github.ref == 'refs/heads/master'
        uses: appleboy/scp-action@master
        with:
-         host: 13.233.140.232
+         host: 3.108.196.200
          username: root
          port: 22
          key: ${{ secrets.Key }}
@@ -51,7 +51,7 @@ jobs:
              unzip -o /home/ubuntu/filename.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f dist/* /var/www/html/      
-         host: 13.233.140.232
+         host: 3.108.196.200
          user: root
          key: ${{ secrets.key}} 
                 
@@ -59,7 +59,7 @@ jobs:
        if: github.ref == 'refs/heads/prod'
        uses: appleboy/scp-action@master
        with:
-         host: 13.127.182.237
+         host: 65.1.93.205
          username: ubuntu
          port: 22
          key: ${{ secrets.Key }}
@@ -76,6 +76,6 @@ jobs:
              unzip -o /home/ubuntu/filename.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/
-         host: 13.127.182.237
+         host: 65.1.93.205
          user: ubuntu
          key: ${{ secrets.key}} 
