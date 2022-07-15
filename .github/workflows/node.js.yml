@@ -28,7 +28,7 @@ jobs:
          cache: 'npm'
      - run: npm install
      - run: npm run build --if-present
-     - run: zip -r frontend.zip dist/
+   #  - run: zip -r frontend.zip dist/
         
      - name: copy file via ssh key master
        if: github.ref == 'refs/heads/master'
@@ -76,7 +76,7 @@ jobs:
          username: root
          port: 22
          key: ${{ secrets.Key }}
-         source: "frontend.zip"
+         source: "dist"
          target: "/home/ubuntu/"
         
      - name: ls -a via ssh prod
