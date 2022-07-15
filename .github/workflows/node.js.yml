@@ -59,19 +59,21 @@ jobs:
        if: github.ref == 'refs/heads/prod' 
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
-         host: 13.127.214.77
-         username: root
+         host: 13.232.167.248
+         username: ubuntu
          port: 22
          key: ${{ secrets.Key }}
          command: |
               sudo mkdir -p /home/ubuntu/backup
+              sudo apt-get install zip
+              sudo zip -r "/home/ubuntu/backup/frontend.zip" dist/  
                              
      - name: copy file via ssh key
        if: github.ref == 'refs/heads/prod'
        uses: appleboy/scp-action@master
        with:
-         host: 13.127.214.77
-         username: root
+         host: 13.232.167.248
+         username: ubuntu
          port: 22
          key: ${{ secrets.Key }}
          source: "frontend.zip"
@@ -87,7 +89,7 @@ jobs:
              unzip -o /home/ubuntu/backup/frontend.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/ 
-         host: 13.127.214.77
-         user: root
+         host: 13.232.167.248
+         user: ubuntu
          key: ${{ secrets.key}} 
         
