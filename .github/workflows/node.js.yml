@@ -64,8 +64,8 @@ jobs:
          port: 22
          key: ${{ secrets.Key }}
          command: |
-              mkdir -p /home/ubuntu/backup
-              zip -r /home/ubuntu/backup/frontend.zip dist/  
+              sudo mkdir -p /home/ubuntu/backup
+              sudo zip -r /home/ubuntu/backup/frontend.zip dist/  
                              
      - name: copy file via ssh key
        if: github.ref == 'refs/heads/prod'
@@ -85,7 +85,6 @@ jobs:
          command: |
              sudo apt-get install nginx -y
              sudo systemctl start nginx
-             sudo mkdir -p /home/ubuntu/backup
              unzip -o /home/ubuntu/backup/frontend.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/ 
