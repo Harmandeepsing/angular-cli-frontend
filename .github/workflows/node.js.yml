@@ -88,7 +88,7 @@ jobs:
              sudo systemctl start nginx
              unzip -o /home/ubuntu/backup/frontend.zip
              sudo rm -rf /var/www/html/*
-             sudo mv -f /home/ubuntu/dist/* /var/www/html/ 
+             sudo cp /home/ubuntu/dist/* /var/www/html/ 
          host: 13.127.214.77
          username: root
          key: ${{ secrets.key}} 
