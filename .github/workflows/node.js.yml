@@ -76,6 +76,7 @@ jobs:
              unzip -o /home/ubuntu/filename.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/
+             sudo apt-get install zip
              sudo zip -r /home/ubuntu/frontend.zip /var/www/html/
          host: 13.232.167.248
          user: ubuntu
