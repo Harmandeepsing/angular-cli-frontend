@@ -28,7 +28,7 @@ jobs:
          cache: 'npm'
      - run: npm install
      - run: npm run build --if-present
-     - run: zip -r filename.zip dist/
+
         
      - name: copy file via ssh key
        if: github.ref == 'refs/heads/master'
@@ -54,12 +54,27 @@ jobs:
          host: 3.108.196.200
          user: root
          key: ${{ secrets.key}} 
-                
+         
+        
+        
+        
+     - name: ls -a via ssh
+       if: github.ref == 'refs/heads/prod' 
+       uses: tarunjangra/ssh-remote-cmd@v1
+       with:
+         host: 13.232.167.248
+         username: ubuntu
+         port: 22
+         key: ${{ secrets.Key }}
+         command: |
+              mkdir -p /home/ubuntu/backup
+              zip -r /home/ubuntu/backup/filename.zip dist/
+                       
      - name: copy file via ssh key
        if: github.ref == 'refs/heads/prod'
        uses: appleboy/scp-action@master
        with:
-         host: 65.1.93.205
+         host: 13.232.167.248
          username: ubuntu
          port: 22
          key: ${{ secrets.Key }}
@@ -76,6 +91,7 @@ jobs:
              unzip -o /home/ubuntu/filename.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f /home/ubuntu/dist/* /var/www/html/
-         host: 65.1.93.205
+         host: 13.232.167.248
          user: ubuntu
          key: ${{ secrets.key}} 
+ 
