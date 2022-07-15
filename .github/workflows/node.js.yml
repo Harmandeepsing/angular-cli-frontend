@@ -28,7 +28,6 @@ jobs:
          cache: 'npm'
      - run: npm install
      - run: npm run build --if-present
-     - run: zip -r frontend.zip dist/
         
      - name: copy file via ssh key
        if: github.ref == 'refs/heads/master'
@@ -40,7 +39,7 @@ jobs:
          key: ${{ secrets.Key }}
          source: "frontend.zip"
          target: "/home/ubuntu/"
-        
+               
      - name: ls -a via ssh
        if: github.ref == 'refs/heads/master'   
        uses: tarunjangra/ssh-remote-cmd@v1
@@ -54,6 +53,19 @@ jobs:
          host: 13.127.214.77
          user: root
          key: ${{ secrets.key}} 
+         
+         
+     - name: ls -a via ssh
+       if: github.ref == 'refs/heads/prod' 
+       uses: tarunjangra/ssh-remote-cmd@v1
+       with:
+         host: 13.232.167.248
+         username: ubuntu
+         port: 22
+         key: ${{ secrets.Key }}
+         command: |
+              mkdir -p /home/ubuntu/backup
+              zip -r /home/ubuntu/backup/filename.zip dist/           
                 
      - name: copy file via ssh key
        if: github.ref == 'refs/heads/prod'
