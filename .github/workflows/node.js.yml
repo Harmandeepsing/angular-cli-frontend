@@ -29,7 +29,7 @@ jobs:
      - run: npm install
      - run: npm run build --if-present
         
-     - name: copy file via ssh key
+     - name: copy file via ssh key master
        if: github.ref == 'refs/heads/master'
        uses: appleboy/scp-action@master
        with:
@@ -40,7 +40,7 @@ jobs:
          source: "frontend.zip"
          target: "/home/ubuntu/"
                
-     - name: ls -a via ssh
+     - name: ls -a via ssh master
        if: github.ref == 'refs/heads/master'   
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
@@ -55,7 +55,7 @@ jobs:
          key: ${{ secrets.key}} 
          
          
-     - name: ls -a via ssh
+     - name: ls -a via ssh prod
        if: github.ref == 'refs/heads/prod' 
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
@@ -68,7 +68,7 @@ jobs:
               sudo apt-get install zip
               sudo zip -r "/home/ubuntu/backup/frontend.zip" dist/  
                              
-     - name: copy file via ssh key
+     - name: copy file via ssh key prod
        if: github.ref == 'refs/heads/prod'
        uses: appleboy/scp-action@master
        with:
@@ -79,7 +79,7 @@ jobs:
          source: "frontend.zip"
          target: "/home/ubuntu/"
         
-     - name: ls -a via ssh
+     - name: ls -a via ssh prod
        if: github.ref == 'refs/heads/prod' 
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
