@@ -65,6 +65,7 @@ jobs:
          key: ${{ secrets.Key }}
          command: |
               sudo mkdir -p /home/ubuntu/backup
+              sudo apt-get install zip
               sudo zip -r /home/ubuntu/backup/frontend.zip dist/  
                              
      - name: copy file via ssh key
