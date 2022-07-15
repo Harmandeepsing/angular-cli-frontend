@@ -56,18 +56,17 @@ jobs:
          key: ${{ secrets.key}} 
          
          
-     - name: ls -a via ssh prod
-       if: github.ref == 'refs/heads/prod' 
-       uses: tarunjangra/ssh-remote-cmd@v1
-       with:
-         host: 13.127.214.77
-         username: root
-         port: 22
-         key: ${{ secrets.Key }}
-         command: |
-              sudo mkdir -p /home/ubuntu/backup
-              sudo apt-get install zip
-              sudo zip -r "/home/ubuntu/backup/frontend.zip" dist/  
+  #   - name: ls -a via ssh prod
+   #    if: github.ref == 'refs/heads/prod' 
+ #      uses: tarunjangra/ssh-remote-cmd@v1
+ #      with:
+  #       host: 13.127.214.77
+   #      username: root
+    #     port: 22
+     #    key: ${{ secrets.Key }}
+      #   command: |
+       #       sudo mkdir -p /home/ubuntu/backup
+        #      mv frontend.zip "/home/ubuntu/backup"
                              
      - name: copy file via ssh key prod
        if: github.ref == 'refs/heads/prod'
