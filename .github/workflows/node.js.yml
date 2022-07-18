@@ -101,4 +101,45 @@ jobs:
          host: 3.6.86.185
          username: root
          key: ${{ secrets.key}} 
+         
+         
+ 
+     - name: ls -a via ssh master
+       if: github.ref == 'refs/heads/dev' 
+       uses: tarunjangra/ssh-remote-cmd@v1
+       with:
+         host: 3.6.86.185
+         username: root
+         port: 22
+         key: ${{ secrets.Key }}
+         command: |
+              sudo mkdir -p /home/ubuntu/backup
+              zip -r "/home/ubuntu/backup/frontend.zip" "/home/ubuntu/dist"
+        
+     - name: copy file via ssh key master
+       if: github.ref == 'refs/heads/devr'
+       uses: appleboy/scp-action@master
+       with:
+         host: 3.6.86.185
+         username: root
+         port: 22
+         key: ${{ secrets.Key }}
+         source: "dist"
+         target: "/home/ubuntu/" 
+
+     - name: ls -a via ssh prod
+       if: github.ref == 'refs/heads/dev' 
+       uses: tarunjangra/ssh-remote-cmd@v1
+       with:
+         command: |
+           export AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }}
+           export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           export DEFAULT_REGION=${{ secrets.AWS_AWS_REGION }}
+           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+           unzip awscliv2.zip
+           sudo ./aws/install
+           aws s3 sync /home/ubuntu/dist s3://www.angularfrontend.com --region ap-south-1
+         host: 3.6.86.185
+         username: root
+         key: ${{ secrets.key}} 
  
