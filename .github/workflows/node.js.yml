@@ -115,7 +115,7 @@ jobs:
          key: ${{ secrets.Key }}
          command: |
               sudo mkdir -p /home/ubuntu/backup
-              sudo zip -r "/home/ubuntu/backup/frontend.zip" "/home/ubuntu/dist"
+              sudo zip -r "/home/ubuntu/backup/frontend.zip" "dist"
         
      - name: copy file via ssh key dev
        if: github.ref == 'refs/heads/devr'
