@@ -133,9 +133,9 @@ jobs:
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
          command: |
-           export aws_access_key=${{ secrets.AWS_ACCESS_KEY }}
-           export aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-           export default_region=${{ secrets.AWS_AWS_REGION }}
+           export aws_access_key=AKIA25NMVKNBML6PWUUV
+           export aws_secret_access_key=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
+           export aws_default_region=ap-south-1
            aws s3 sync /home/ubuntu/dist s3://www.angularfrontend.com --region ap-south-1
          host: 3.6.86.185
          username: root
