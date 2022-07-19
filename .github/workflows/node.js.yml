@@ -33,7 +33,7 @@ jobs:
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
          host: 52.66.157.230
-         username: ubuntu
+         user: ubuntu
          port: 22
          key: ${{ secrets.Key }}
          command: |
@@ -59,7 +59,6 @@ jobs:
          command: |
              sudo apt-get install nginx -y
              sudo systemctl start nginx
-             unzip -o /home/ubuntu/frontend.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f dist/* /var/www/html/      
          host: 52.66.157.230
@@ -72,12 +71,12 @@ jobs:
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
          host: 52.66.157.230
-         username: ubuntu
+         user: ubuntu
          port: 22
          key: ${{ secrets.Key }}
          command: |
               sudo mkdir -p /home/ubuntu/backup
-              zip -r "/home/ubuntu/backup/frontend-$(date +"%Y.%m.%d.%H.%M.%S").zip" "/var/www/html"
+              sudo zip -r "/home/ubuntu/backup/frontend-$(date +"%Y.%m.%d.%H.%M.%S").zip" "/var/www/html"
 
                                                   
      - name: copy file via ssh key prod
@@ -98,11 +97,10 @@ jobs:
          command: |
              sudo apt-get install nginx -y
              sudo systemctl start nginx
-             unzip -o /home/ubuntu/backup/frontend.zip
              sudo rm -rf /var/www/html/*
-             sudo cp -r /home/ubuntu/dist/* /var/www/html/ 
+             sudo mv  /home/ubuntu/dist/* /var/www/html/ 
          host: 52.66.157.230
-         username: ubuntu
+         user: ubuntu
          key: ${{ secrets.key}} 
          
                  
