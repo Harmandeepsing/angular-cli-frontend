@@ -76,7 +76,7 @@ jobs:
          key: ${{ secrets.Key }}
          command: |
               sudo mkdir -p /home/ubuntu/backup
-              zip -r "/home/ubuntu/backup/frontend.zip" "/home/ubuntu/dist"
+              zip -r "/home/ubuntu/backup/frontend.zip" "/var/www/html/"
                                                   
      - name: copy file via ssh key prod
        if: github.ref == 'refs/heads/prod'
