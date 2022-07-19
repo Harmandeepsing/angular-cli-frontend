@@ -77,7 +77,7 @@ jobs:
          key: ${{ secrets.Key }}
          command: |
               sudo mkdir -p /home/ubuntu/backup
-              zip -r "/home/ubuntu/backup/frontend-$(date +"%Y.%m.%d.%H.%M.%S").zip" "/var/www/html"
+              sudo zip -r "/home/ubuntu/backup/frontend-$(date +"%Y.%m.%d.%H.%M.%S").zip" "/var/www/html"
 
                                                   
      - name: copy file via ssh key prod
