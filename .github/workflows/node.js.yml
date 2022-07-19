@@ -32,8 +32,8 @@ jobs:
        if: github.ref == 'refs/heads/master' 
        uses: tarunjangra/ssh-remote-cmd@v1
        with:
-         host: 3.6.86.185
-         username: root
+         host: 52.66.157.230
+         username: ubuntu
          port: 22
          key: ${{ secrets.Key }}
          command: |
@@ -44,8 +44,8 @@ jobs:
        if: github.ref == 'refs/heads/master'
        uses: appleboy/scp-action@master
        with:
-         host: 3.6.86.185
-         username: root
+         host: 52.66.157.230
+         username: ubuntu
          port: 22
          key: ${{ secrets.Key }}
          source: "dist"
@@ -61,8 +61,8 @@ jobs:
              unzip -o /home/ubuntu/frontend.zip
              sudo rm -rf /var/www/html/*
              sudo mv -f dist/* /var/www/html/      
-         host: 3.6.86.185
-         user: root
+         host: 52.66.157.230
+         user: ubuntu
          key: ${{ secrets.key}} 
          
          
