@@ -28,17 +28,17 @@ jobs:
      - run: npm install
      - run: npm run build --if-present
      
-  #   - name: ls -a via ssh master
-  #     if: github.ref == 'refs/heads/master' 
-  #     uses: tarunjangra/ssh-remote-cmd@v1
-  #     with:
-   #      host: 52.66.157.230
-   #      username: ubuntu
-   #      port: 22
-   #      key: ${{ secrets.Key }}
-   #      command: |
-    #          sudo mkdir -p /home/ubuntu/backup
-    #          zip -r "/home/ubuntu/backup/frontend.zip" "dist"
+     - name: ls -a via ssh master
+       if: github.ref == 'refs/heads/master' 
+       uses: tarunjangra/ssh-remote-cmd@v1
+       with:
+         host: 52.66.157.230
+         username: ubuntu
+         port: 22
+         key: ${{ secrets.Key }}
+         command: |
+              sudo mkdir -p /home/ubuntu/backup
+              zip -r "/home/ubuntu/backup/frontend.zip" "/home/ubuntu/dist"
         
      - name: copy file via ssh key master
        if: github.ref == 'refs/heads/master'
