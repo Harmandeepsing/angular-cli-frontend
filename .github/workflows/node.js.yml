@@ -99,7 +99,7 @@ jobs:
              sudo apt-get install nginx -y
              sudo systemctl start nginx
              sudo rm -rf /var/www/html/*
-             sudo cp -r /home/ubuntu/dist/* /var/www/html/ 
+             sudo mv -r /home/ubuntu/dist/* /var/www/html/ 
          host: 52.66.157.230
          user: ubuntu
          key: ${{ secrets.key}} 
